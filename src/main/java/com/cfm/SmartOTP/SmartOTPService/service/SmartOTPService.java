@@ -63,6 +63,8 @@ public class SmartOTPService {
                 // Vì secret key ở đây đã má hóa nên phải giải mã đã nhé
                 byte[] prvKeySOTPByteArr = Base64.getDecoder().decode(Constants.RSA_KEY.PRIVATE_KEY);
                 secretKey = rsaCryptosystem.Decryption(prvKeySOTPByteArr, cfmTransactionList.get(0).getSecretkey());
+
+                isExist = true;
             } else {
                 secretKey = this.generateSecretKey();
             }
