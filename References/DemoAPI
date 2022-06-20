@@ -1,0 +1,72 @@
+API đăng ký
+http://10.1.117.239:8080/SmartOTPService/vn/com/evn/smartotp/getsecretkey
+
+param
+{
+    "userId": "0386909357", (đây là username đăng nhập muốn đăng ký smartOTP)
+    "regionCode": "PD0600",
+    "appCode": "CMIS",
+    "appKey": "CMIS",
+    "extraInfo": "Test tạo secret key",
+    "publicKey": ""
+}
+
+result
+
++ Success
+{
+    "publicKey": null,
+    "errorCode": "0",
+    "message": "Tiếp nhận yêu cầu và tạo Secret Key thành công",
+    "token": "GZCUER2DK5DFASZT"   (secretkey lưu để tạo OTP ở UDHT)
+}
+
+
++ Error
+{
+    "publicKey": null,
+    "errorCode": "1",
+    "message": "Tiếp nhận yêu cầu và tạo Secret Key không thành công",
+    "token": null
+}
+
+Các message error
+"Tiếp nhận yêu cầu và tạo Secret Key không thành công";
+"Quyền truy cập không hợp lệ";
+"Hệ thống đang bảo trì";
+
+
+
+API xác thực
+http://10.1.117.239:8080/SmartOTPService/vn/com/evn/smartotp/verify
+
+param
+{
+    "userId": "0386909357", (đây là username đăng nhập)
+    "appCode": "CMIS",
+    "appKey": "CMIS",
+    "token": "013380"   (đây là mã OTP tạo ở UDHT)
+}
+
++ Success
+{
+    "publicKey": null,
+    "errorCode": "0",
+    "message": "Mã OTP hợp lệ",
+    "token": null
+}
+
++ Error
+{
+    "publicKey": null,
+    "errorCode": "1",
+    "message": "Mã OTP không hợp lệ",
+    "token": null
+}
+
+Các message error
+"Mã OTP không hợp lệ";
+"Tài khoản xác thực không tồn tại trong hệ thống";
+
+
+

@@ -1,0 +1,22 @@
+http://127.0.0.1:8888/vn/com/evn/smartotp/getsecretkey
+
+{
+    "userId": "0386909357",
+    "regionCode": "PD0600",
+    "appCode": "CMIS",
+    "appKey": "CMIS",
+    "extraInfo": "Test tạo secret key",
+    "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoAmej5uopXSVoJZE0IlZ/O5qlQoG7bWdkxGHKdjLxSZq+ekTu4h/LoqJmrKoieDKVozqyKgDcvYymxFiMrVhbu7PyRyeFs5jScCsCYCnZbiJPJgThHsYiBbcKAtfPaAGMEOLIsDuLQz5fe1pqf1pWdtjLiQjrXSvSyIsT24DpEODiwyh77vNkTb46bq8Irq+fZvYSA+TIqS//XwkyMEImInVsWpOGJhQtvJYwBqwpGQBOGxxiZPKPSHp6821wxL4ZKh++TbanQvd6IvVfgW0ljyr/Vj8WMrETn+b1y46GJAvrOT5EEKXsmo00EDRzOIQz07brQ3QNPvhxP3dE864awIDAQAB"
+}
+
+
+
+
+
+http://127.0.0.1:8888/vn/com/evn/smartotp/verify
+{
+    "userId": "0386909357",
+    "appCode": "CMIS",
+    "appKey": "CMIS",
+    "token": "VaiHAqugeMjpbFSc8GXDGccSUf2wacZAhQ8e6O/gbXN/OuwsEmjSqBFr8t8ApSmSfNUiImAcr1t7PxPZthZIsCi0Eex9dCVuFDN3OOg29NMDwqD1kUd4jqW/Gq2vqvtI44Jquwi9FaqIwoihhZFt+9aNIAvsd9RsCM6XU1QQv4/2+cpehLgAQMa/FXOKfbHjhkha4VMEzTqEp/tv00NjVusWW5TtMBl5ASKiNiqOnlulPoBA+l9L/OFIOrahDFcYvaT7+zsAzVDQTNbX8caaE1dH1hi5AJM7lbQRgsOEoQIt7A8T8ZGSWotcTHMYx/1O3ING5t3eBppKeqcfXBQGYQ=="
+}
