@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "1b42d7e5-adb1-47e7-a673-51558c7f4b56",
+		"name": "SmartOTP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10287514"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8989/smartOTP/getSecretKey",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"0386909357\",\r\n    \"regionCode\": \"PD0600\",\r\n    \"appCode\": \"CMIS\",\r\n    \"appKey\": \"CMIS\",\r\n    \"extraInfo\": \"Test tạo secret key\",\r\n    \"publicKey\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoAmej5uopXSVoJZE0IlZ/O5qlQoG7bWdkxGHKdjLxSZq+ekTu4h/LoqJmrKoieDKVozqyKgDcvYymxFiMrVhbu7PyRyeFs5jScCsCYCnZbiJPJgThHsYiBbcKAtfPaAGMEOLIsDuLQz5fe1pqf1pWdtjLiQjrXSvSyIsT24DpEODiwyh77vNkTb46bq8Irq+fZvYSA+TIqS//XwkyMEImInVsWpOGJhQtvJYwBqwpGQBOGxxiZPKPSHp6821wxL4ZKh++TbanQvd6IvVfgW0ljyr/Vj8WMrETn+b1y46GJAvrOT5EEKXsmo00EDRzOIQz07brQ3QNPvhxP3dE864awIDAQAB\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8989/smartOTP/getSecretKey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"smartOTP",
+						"getSecretKey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8989/smartOTP/verifyOTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"appCode\": \"CMIS\",\r\n  \"appKey\": \"CMIS\",\r\n  \"userId\": \"0386909357\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8989/smartOTP/getJWTByUserId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"smartOTP",
+						"getJWTByUserId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8989/smartOTP/getJWTByUserId",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"appCode\": \"CMIS\",\r\n  \"appKey\": \"CMIS\",\r\n  \"userId\": \"0386909357\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8989/smartOTP/getJWTByUserId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"smartOTP",
+						"getJWTByUserId"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

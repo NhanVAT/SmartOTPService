@@ -5,54 +5,41 @@ import com.cfm.SmartOTP.SmartOTPService.model.CreateSecretKeyModel;
 import com.cfm.SmartOTP.SmartOTPService.model.Response;
 import com.cfm.SmartOTP.SmartOTPService.model.VerifyOTPModel;
 import com.cfm.SmartOTP.SmartOTPService.service.SmartOTPService;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.annotations.Api;
+import javax.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping(value = "/com/cfm/smartotp")
+@RequestMapping("/smartOTP")
+@Api(tags = "smartOTP")
+@RequiredArgsConstructor
 public class SmartOTPController {
 
-    @Autowired
-    private SmartOTPService smartOTPService;
+  private final SmartOTPService smartOTPService;
 
-    @GetMapping("/testAPI")
-    public String testAPI() {
-        return "Test API success";
-    }
+  @PostMapping(value = {"/getSecretKey"}, produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Response> getSecretKey(@RequestBody @Valid CreateSecretKeyModel inputData) {
 
-    @PostMapping(value = {"getSecretKey"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> getSecretKey(@RequestBody @Valid CreateSecretKeyModel inputData) {
+    return ResponseEntity.status(HttpStatus.OK).body(smartOTPService.getSecrectKey(inputData));
+  }
 
-        return this.createResponse(HttpStatus.OK, smartOTPService.getSecrectKey(inputData));
-    }
+  @PostMapping(value = {"/getJWTByUserId"}, produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Response> getJWTByUserId(
+      @RequestBody @Valid CreateJWTTokenModel inputData) {
+    return ResponseEntity.status(HttpStatus.OK).body(smartOTPService.getJWTByUserId(inputData));
+  }
 
-    @PostMapping(value = {"getJWTByUserId"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> getJWTByUserId(@RequestBody @Valid CreateJWTTokenModel inputData) {
-
-        return this.createResponse(HttpStatus.OK, smartOTPService.getJWTByUserId(inputData));
-    }
-
-    @PostMapping(value = {"verifyOTP"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> verifyOTP(@RequestBody @Valid VerifyOTPModel inputData) {
-
-        return this.createResponse(HttpStatus.OK, smartOTPService.verifyOTP(inputData));
-    }
-
-    ResponseEntity<Object> createResponse(HttpStatus httpStatus, String errorCode, String jwt, String message) {
-        Response result = new Response();
-        result.setErrorCode(errorCode);
-        result.setMessage(message);
-        result.setJwt(jwt);
-
-        return new ResponseEntity<>(result, httpStatus);
-    }
-
-    ResponseEntity<Object> createResponse(HttpStatus httpStatus, Response response) {
-        return new ResponseEntity<>(response, httpStatus);
-    }
+  @PostMapping(value = {"/verifyOTP"}, produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Response> verifyOTP(@RequestBody @Valid VerifyOTPModel inputData) {
+    return ResponseEntity.status(HttpStatus.OK).body(smartOTPService.verifyOTP(inputData));
+  }
 }

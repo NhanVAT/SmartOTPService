@@ -6,9 +6,9 @@ spring:
     active: dev
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mariadb://localhost:3306/smartotp?useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mariadb://localhost:3307/s_smartotp?useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
-    password: root
+    password: cmis1234
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -17,7 +17,26 @@ spring:
         prepStmtCacheSize: 250
         prepStmtCacheSqlLimit: 2048
         useServerPrepStmts: true
-
+  tomcat:
+    max-wait: 20000
+    max-active: 50
+    max-idle: 20
+    min-idle: 15
+  jpa:
+    #hibernate:
+    #  ddl-auto: create
+    #ddl-auto: none
+    #naming:
+    #physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        # dialect: org.hibernate.dialect.H2Dialect
+        # dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.MariaDB103Dialect
+        format_sql: true
+        id:
+          new_generator_mappings: false
+    show-sql: false
 ---
 server:
   port: 8989
@@ -31,7 +50,7 @@ JWT_TIMEOUT: 360
 JWT_COUNTER: 3
 ###
 
-PASS.ACC: false
+PASS.ACC: true
 
 TOTP_NUMBERCPU: 8
 TOTP_SIZE: 6
